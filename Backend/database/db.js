@@ -15,6 +15,12 @@ const seedData = [
   { title: "Sapiens", author: "Yuval Noah Harari", isbn: "9780062316097", genre: "History", publishedYear: 2011, totalCopies: 3, availableCopies: 3, price: 550, coverImage: placeholderImg }
 ];
 
+const seedUsers = [
+  { name: "John Member", email: "john@member.com", password: "password123", role: "User", isVerified: true },
+  { name: "Sarah Reader", email: "sarah@member.com", password: "password123", role: "User", isVerified: true },
+  { name: "Admin Power", email: "admin2@library.com", password: "password123", role: "Admin", isVerified: true }
+];
+
 export const connectDatabase = () => {
   mongoose
     .connect(process.env.MONGO_URI, {
@@ -24,14 +30,26 @@ export const connectDatabase = () => {
       console.log("Connected to database.");
       
       // Seed initial books if empty
-      const count = await Book.countDocuments();
-      if (count === 0) {
+      const bookCount = await Book.countDocuments();
+      if (bookCount === 0) {
         console.log("Seeding initial book data...");
         try {
           await Book.insertMany(seedData);
-          console.log("Seeding complete.");
+          console.log("Book seeding complete.");
         } catch (err) {
-          console.error("Seeding error:", err.message);
+          console.error("Book seeding error:", err.message);
+        }
+      }
+
+      // Seed initial users if nearly empty (e.g., only 1 librarian exists)
+      const userCount = await User.countDocuments();
+      if (userCount <= 1) {
+        console.log("Seeding initial member data...");
+        try {
+          await User.insertMany(seedUsers);
+          console.log("User seeding complete.");
+        } catch (err) {
+          console.error("User seeding error:", err.message);
         }
       }
     })
