@@ -28,7 +28,16 @@ const seedData = [
   { title: "Pride and Prejudice", author: "Jane Austen", isbn: "9780141439518", genre: "Romance", publishedYear: 1813, totalCopies: 6, availableCopies: 6, price: 199, coverImage: placeholderImg },
   { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", isbn: "9780374275631", genre: "Psychology", publishedYear: 2011, totalCopies: 4, availableCopies: 4, price: 580, coverImage: placeholderImg },
   { title: "Zero to One", author: "Peter Thiel", isbn: "9780804139298", genre: "Business", publishedYear: 2014, totalCopies: 8, availableCopies: 8, price: 450, coverImage: placeholderImg },
-  { title: "Deep Work", author: "Cal Newport", isbn: "9781455586691", genre: "Self-Help", publishedYear: 2016, totalCopies: 10, availableCopies: 10, price: 399, coverImage: placeholderImg }
+  { title: "Deep Work", author: "Cal Newport", isbn: "9781455586691", genre: "Self-Help", publishedYear: 2016, totalCopies: 10, availableCopies: 10, price: 399, coverImage: placeholderImg },
+  { title: "Educated", author: "Tara Westover", isbn: "9780399590504", genre: "Memoir", publishedYear: 2018, totalCopies: 6, availableCopies: 6, price: 450, coverImage: placeholderImg },
+  { title: "The Martian", author: "Andy Weir", isbn: "9780553418026", genre: "Sci-Fi", publishedYear: 2011, totalCopies: 8, availableCopies: 8, price: 380, coverImage: placeholderImg },
+  { title: "Man's Search for Meaning", author: "Viktor Frankl", isbn: "9780807014295", genre: "Philosophy", publishedYear: 1946, totalCopies: 10, availableCopies: 10, price: 299, coverImage: placeholderImg },
+  { title: "The Night Circus", author: "Erin Morgenstern", isbn: "9780307744432", genre: "Fantasy", publishedYear: 2011, totalCopies: 5, availableCopies: 5, price: 420, coverImage: placeholderImg },
+  { title: "Quiet", author: "Susan Cain", isbn: "9780307352156", genre: "Psychology", publishedYear: 2012, totalCopies: 7, availableCopies: 7, price: 480, coverImage: placeholderImg },
+  { title: "Circe", author: "Madeline Miller", isbn: "9780316556347", genre: "Mythology", publishedYear: 2018, totalCopies: 6, availableCopies: 6, price: 550, coverImage: placeholderImg },
+  { title: "Dopamine Nation", author: "Anna Lembke", isbn: "9781524746728", genre: "Health", publishedYear: 2021, totalCopies: 9, availableCopies: 9, price: 599, coverImage: placeholderImg },
+  { title: "The Midnight Library", author: "Matt Haig", isbn: "9780525559474", genre: "Fiction", publishedYear: 2020, totalCopies: 12, availableCopies: 12, price: 350, coverImage: placeholderImg },
+  { title: "Shoe Dog", author: "Phil Knight", isbn: "9781501135910", genre: "Business", publishedYear: 2016, totalCopies: 5, availableCopies: 5, price: 650, coverImage: placeholderImg }
 ];
 
 const seedUsers = [
