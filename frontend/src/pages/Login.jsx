@@ -68,7 +68,12 @@ export default function Login() {
         email: targetEmail,
         password: targetPassword,
       });
-      const user = res.data.user;
+      const { user, token } = res.data;
+
+      // Save token to localStorage for persistent sessions
+      if (token) {
+        localStorage.setItem("token", token);
+      }
 
       if (user.role === "Admin" || user.role === "Librarian") {
         navigate("/admin");

@@ -4,7 +4,12 @@ import ErrorHandler from "./errorMiddleware.js";
 import jwt from "jsonwebtoken";
 
 export const isAuthenticated = catchAsyncErrors(async (req, res, next) => {
-  const { token } = req.cookies;
+  let token = req.cookies.token;
+  
+  // Also check for token in the Authorization header
+  if (!token && req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+    token = req.headers.authorization.split(" ")[1];
+  }
   
   if (!token) {
     return next(new ErrorHandler("User not authenticated", 401));

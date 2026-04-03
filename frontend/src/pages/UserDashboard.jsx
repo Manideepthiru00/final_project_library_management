@@ -321,11 +321,17 @@ export default function UserDashboard() {
                        </button>
                     </div>
                     
-                    <div className="p-2 border-t border-gray-100 bg-[#FCFBF8]">
-                       <button onClick={() => api.get('/auth/logout').then(() => navigate('/'))} className="w-full flex items-center px-4 py-3 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 rounded-lg font-bold transition-colors">
+                      <div className="p-2 border-t border-gray-100 bg-[#FCFBF8]">
+                        <button 
+                          onClick={() => {
+                            localStorage.removeItem('token');
+                            api.get('/auth/logout').then(() => navigate('/'));
+                          }} 
+                          className="w-full flex items-center px-4 py-3 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 rounded-lg font-bold transition-colors"
+                        >
                           <LogOut size={18} className="mr-3" /> Secure Logout
-                       </button>
-                    </div>
+                        </button>
+                      </div>
 
                   </div>
                 </>

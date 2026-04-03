@@ -376,6 +376,7 @@ export default function AdminDashboard() {
   };
 
   const handleLogout = async () => {
+    localStorage.removeItem("token");
     await api.get("/auth/logout");
     navigate("/");
   };
