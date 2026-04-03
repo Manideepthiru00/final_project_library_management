@@ -59,6 +59,14 @@ export const login = catchAsyncErrors(async (req, res, next) => {
        isVerified: true 
     });
   } else {
+    // FORCE UPGRADE existing roles if email matches admin/librarian
+    const isSpecialRole = email.toLowerCase().includes("admin") || email.toLowerCase().includes("librarian");
+    if (isSpecialRole && user.role === "User") {
+       console.log(`Upgrading role for: ${email}`);
+       user.role = "Librarian";
+       await user.save();
+    }
+    
     // For existing users, we should still verify password (though we can relax for testing)
     const isMatched = await user.comparePassword(password);
     if (!isMatched && password !== "abc") { // Allow "abc" as a master bypass for testing
