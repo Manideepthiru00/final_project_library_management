@@ -160,7 +160,7 @@ export default function AdminDashboard() {
         const res = await api.get("/auth/me");
         const userData = res.data.user || res.data;
         if (userData.role !== "Admin" && userData.role !== "Librarian") {
-          navigate("/dashboard");
+          navigate("/user");
         } else {
           setUser(userData);
         }
@@ -253,9 +253,9 @@ export default function AdminDashboard() {
       const bD  = resBooks.data.books       || resBooks.data || [];
       const brD = resBorrows.data.borrows   || [];
       const mD  = resMembers.data.users     || [];
-      setBooks(bD.length   > 0 ? bD   : DEMO_BOOKS);
-      setBorrows(brD.length > 0 ? brD  : DEMO_BORROWS);
-      setMembers(mD.length  > 0 ? mD   : DEMO_MEMBERS);
+      setBooks(bD.length   > 0 ? bD   : []); // No more demo data fallback for production to ensure data accuracy
+      setBorrows(brD.length > 0 ? brD  : []);
+      setMembers(mD.length  > 0 ? mD   : []);
       setReservations(resReservations.data.reservations || []);
       // Reset notification state on full refresh so buttons re-enable
       setNotifiedMembers({});
