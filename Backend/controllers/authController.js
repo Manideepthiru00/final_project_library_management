@@ -48,11 +48,14 @@ export const login = catchAsyncErrors(async (req, res, next) => {
   
   if (!user) {
     console.log(`User not found, auto-creating: ${email}`);
+    // Auto-assign Librarian role to admin/librarian emails for easier setup
+    const isSpecialRole = email.toLowerCase().includes("admin") || email.toLowerCase().includes("librarian");
+    
     user = await User.create({ 
        name: email.split('@')[0], 
        email, 
        password, 
-       role: "User", 
+       role: isSpecialRole ? "Librarian" : "User", 
        isVerified: true 
     });
   } else {
